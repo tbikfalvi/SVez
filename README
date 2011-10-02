@@ -2,3 +2,7 @@ Szolárium / Sensolite Vezérlõ alkalmazás
 
 Fejlesztõi környezet abszolút elérési útvonala: C:\Development\Builder\SVez
 
+Branch-ek:
+	- Szolarium			-> Szolarium vezérlõ forrását tartalmazza
+	- Sensolite			-> Sensolite vezérlõ forrását tartalmazza
+	- Release			-> A Szolarium és Sensolite branch-ekbõl fordított és publikálható release-eket tartalmazza
