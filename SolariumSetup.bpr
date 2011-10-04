@@ -4,9 +4,8 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="SolariumSetup.exe"/>
-    <OBJFILES value="SolariumSetup.obj DialogSelectDir.obj SetupMain.obj 
-      ClassSerialComm.obj ClassHardware.obj 
-      ClassGeneral.obj SerialClass.obj"/>
+    <OBJFILES value="SolariumSetup.obj DialogSelectDir.obj SetupMain.obj ClassSerialComm.obj 
+      ClassHardware.obj ClassGeneral.obj SerialClass.obj"/>
     <RESFILES value="SolariumSetup.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -35,8 +34,7 @@
     <WARNINGS value="-w-par"/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-src_suffix cpp -D_DEBUG -I..\Szolarium -I$(BCB)\include 
-      -I$(BCB)\include\vcl -boa"/>
+    <IDLCFLAGS value="-src_suffix cpp -D_DEBUG -I$(BCB)\include -I$(BCB)\include\vcl -boa"/>
     <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a1 -b- -k -y -v -vi- -c 
       -tW -tWM"/>
     <PFLAGS value="-$YD -$W -$O- -v -JPHNE -M"/>
@@ -56,7 +54,7 @@ AutoIncBuild=1
 MajorVer=3
 MinorVer=0
 Release=2
-Build=2
+Build=3
 Debug=0
 PreRelease=0
 Special=0
@@ -68,7 +66,7 @@ CodePage=1250
 [Version Info Keys]
 CompanyName=
 FileDescription=
-FileVersion=3.0.2.2
+FileVersion=3.0.2.3
 InternalName=
 LegalCopyright=
 LegalTrademarks=
