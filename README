@@ -6,3 +6,6 @@ Branch-ek:
 	- Szolarium			-> Szolarium vezérlõ forrását tartalmazza
 	- Sensolite			-> Sensolite vezérlõ forrását tartalmazza
 	- Release			-> A Szolarium és Sensolite branch-ekbõl fordított és publikálható release-eket tartalmazza
+	- Install			-> A telepítõk kiinduló branch-e
+	- SzolariumInstall		-> Szolárium vezérlõ telepítõje
+	- SensoliteInstall		-> Sensolite vezérlõ telepítõje
