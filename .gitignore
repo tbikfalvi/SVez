@@ -1,0 +1,15 @@
+*.obj
+*.res
+*.~*
+*.rc
+*.drc
+*.exe
+*.tds
+eng/*.tds
+eng/*.eng
+enu/*.tds
+enu/*.enu
+hun/*.tds
+hun/*.hun
+srl/*.tds
+srl/*.srl
