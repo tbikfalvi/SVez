@@ -878,15 +878,38 @@ bool CS_Solarium::CheckBarnulasIdo( int nBarnulas, int *nForint )
 //---------------------------------------------------------------------------
 bool CS_Solarium::CheckKedvezmenyIdo()
 {
+   if( stAdat.nKedvezmenyIdoStart == 0 &&
+       stAdat.nKedvezmenyIdoStop == 0 )
+   {
+      // nincs beallitva kedvezmenyes idoszak
+      return false;
+   }
+
    unsigned short nHour, nMin, nSec, nMSec;
+   bool bRet = false;
 
    Now().DecodeTime( &nHour, &nMin, &nSec, &nMSec );
 
-   if( stAdat.nKedvezmenyIdoStart <= (nHour*60+nMin) &&
-       (nHour*60+nMin) <= stAdat.nKedvezmenyIdoStop )
-      return true;
-   else
-      return false;
+   if( stAdat.nKedvezmenyIdoStart <= stAdat.nKedvezmenyIdoStop )
+   {
+        // nincs napvaltas
+      if( stAdat.nKedvezmenyIdoStart <= (nHour*60+nMin) &&
+          (nHour*60+nMin) <= stAdat.nKedvezmenyIdoStop )
+      {
+         bRet = true;
+      }
+   }
+   else if( stAdat.nKedvezmenyIdoStart > stAdat.nKedvezmenyIdoStop )
+   {
+        // napvaltas
+        if( stAdat.nKedvezmenyIdoStart <= (nHour*60+nMin) ||
+            (nHour*60+nMin) <= stAdat.nKedvezmenyIdoStop )
+      {
+         bRet = true;
+      }
+   }
+
+   return bRet;
 }
 //---------------------------------------------------------------------------
 // Szolárium beállítása kezdõ adatokkal a mûködés megkezdéséhez bérlet használatkor

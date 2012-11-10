@@ -1,6 +1,6 @@
 object FormSzolariumAdat: TFormSzolariumAdat
-  Left = 305
-  Top = 174
+  Left = 286
+  Top = 112
   BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'Szolárium adatok'
