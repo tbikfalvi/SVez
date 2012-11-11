@@ -86,7 +86,7 @@ void __fastcall TFormBerletEladas::ComboBoxTipusChange(TObject *Sender)
    else
       EditBTErvIgNap->Text = AnsiString( stTemp.nErvIgNap );
 
-   EditBTAr->Text = AnsiString( stTemp.nAr );
+   EditBTAr->Text = convertToCurrencyString( stTemp.nAr );
 }
 //---------------------------------------------------------------------------
 void TFormBerletEladas::BerletAdatbazisba()

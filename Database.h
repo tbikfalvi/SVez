@@ -65,6 +65,12 @@
 //---------------------------------------------------------------------------
 #define ERROR_DB_FILE_MISSING    1
 //---------------------------------------------------------------------------
+
+extern int convertCurrency( double p_dCurrency );
+extern int convertCurrencyString( char *sValue );
+extern AnsiString convertToCurrencyString( int p_nValue );
+
+//---------------------------------------------------------------------------
 //
 //    ERROR structure
 //

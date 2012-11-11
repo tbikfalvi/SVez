@@ -560,7 +560,7 @@ void __fastcall TFormMain::MenuMain_PenzKosarClick(TObject *Sender)
                   pPenztar->strLogMsg = AnsiString( "Berlet eladas kosarbol [" ) +
                                         AnsiString( stTemp.strVonalkod ) +
                                         AnsiString( "/" ) +
-                                        AnsiString( stTemp.nAr ) +
+                                        convertToCurrencyString( stTemp.nAr ) +
                                         AnsiString( "/" ) +
                                         AnsiString( stTemp.nDarab ) +
                                         AnsiString( "]" );
@@ -584,7 +584,7 @@ void __fastcall TFormMain::MenuMain_PenzKosarClick(TObject *Sender)
                   pPenztar->strLogMsg = AnsiString( "Termek eladas kosarbol [" ) +
                                         AnsiString( stTemp.strVonalkod ) +
                                         AnsiString( "/" ) +
-                                        AnsiString( stTemp.nAr ) +
+                                        convertToCurrencyString( stTemp.nAr ) +
                                         AnsiString( "/" ) +
                                         AnsiString( stTemp.nDarab ) +
                                         AnsiString( "]" );
@@ -602,7 +602,7 @@ void __fastcall TFormMain::MenuMain_PenzKosarClick(TObject *Sender)
                   pPenztar->strLogMsg = AnsiString( "Szolarium hasznalat fizetve [" ) +
                                         AnsiString( stTemp.strNev ) +
                                         AnsiString( "/" ) +
-                                        AnsiString( stTemp.nAr ) +
+                                        convertToCurrencyString( stTemp.nAr ) +
                                         AnsiString( "/" ) +
                                         AnsiString( stTemp.nDarab ) +
                                         AnsiString( "]" );
@@ -820,11 +820,11 @@ void __fastcall TFormMain::MenuMain_SystemImport_BerletClick(TObject *Sender)
 
                strLine = strLine.SubString( nPos+1, strLine.Length()-nPos );
                nPos = strLine.Pos('\t');
-               stBerletTipus.nAr = strLine.SubString( 1, nPos-1 ).ToInt();
+               stBerletTipus.nAr = convertCurrency(strLine.SubString( 1, nPos-1 ).ToDouble());
 
                if( pBerletek->GetIDBerletTipusAr( stBerletTipus.nAr ) == 0 )
                {
-                  strcpy( stBerletTipus.strNev, AnsiString(stBerletTipus.nAr).c_str() );
+                  strcpy( stBerletTipus.strNev, convertToCurrencyString(stBerletTipus.nAr).c_str() );
                   pBerletek->AddBerletTipus( stBerletTipus );
                   nBerletTipus++;
                }

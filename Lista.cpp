@@ -504,8 +504,8 @@ void TFormLista::FillTermekLista()
       for( nL=0; nL<(int)(nLength[0]-strlen(stTemp.strVonalkod)); nL++ ) strLine += " ";
       strLine += AnsiString( stTemp.strNev );
       for( nL=0; nL<(int)(nLength[1]-strlen(stTemp.strNev)); nL++ ) strLine += " ";
-      strLine += AnsiString( stTemp.nAr );
-      for( nL=0; nL<(int)(nLength[2]-AnsiString(stTemp.nAr).Length()); nL++ ) strLine += " ";
+      strLine += convertToCurrencyString( stTemp.nAr );
+      for( nL=0; nL<(int)(nLength[2]-convertToCurrencyString(stTemp.nAr).Length()); nL++ ) strLine += " ";
       strLine += AnsiString( stTemp.nDarab );
       for( nL=0; nL<(int)(nLength[3]-AnsiString(stTemp.nDarab).Length()); nL++ ) strLine += " ";
 

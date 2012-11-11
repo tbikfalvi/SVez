@@ -5,6 +5,8 @@
 
 #include "Fizetes.h"
 #include "Language.h"
+#include "Database.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -36,13 +38,13 @@ void __fastcall TFormFizetes::EditFizetettChange(TObject *Sender)
 
    try
    {
-      int nFizetendo  = LabelFizetendo->Caption.ToInt();
-      int nFizetett   = EditFizetett->Text.ToInt();
+      int nFizetendo  = convertCurrency(LabelFizetendo->Caption.ToDouble());
+      int nFizetett   = convertCurrency(EditFizetett->Text.ToDouble());
       int nVisszajaro = nFizetett - nFizetendo;
 
       if( nFizetett > nFizetendo )
       {
-         LabelVisszajaro->Caption = AnsiString( nVisszajaro );
+         LabelVisszajaro->Caption = AnsiString( nVisszajaro/100 );
       }
       else
       {

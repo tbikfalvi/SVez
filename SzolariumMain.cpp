@@ -35,6 +35,27 @@ TFormMain *FormMain;
 *
 ****************************************************************************/
 
+int convertCurrency( double p_dCurrency )
+{
+   return (int)(p_dCurrency * 100);
+}
+
+int convertCurrencyString( char *sValue )
+{
+   double fValue = atof( sValue );
+   return (int)(fValue * 100);
+}
+
+AnsiString convertToCurrencyString( int p_nValue )
+{
+   int nEgesz = p_nValue / 100;
+   int nMaradek = p_nValue % 100;
+
+   AnsiString sRet = AnsiString( nEgesz ) + AnsiString( "." ) + AnsiString( nMaradek );
+
+   return sRet;
+}
+
 //---------------------------------------------------------------------------
 // Fõ ablak létrehozásakor lefutó függvény
 //---------------------------------------------------------------------------
@@ -635,7 +656,7 @@ void TFormMain::ActionSzolariumIdo(TObject *Sender, WORD &Key, TShiftState Shift
                                                 AnsiString( "] [" ) +
                                                 AnsiString( nBarnulas ) +
                                                 AnsiString( "] perc [" ) +
-                                                AnsiString( nForint ) +
+                                                convertToCurrencyString( nForint ) +
                                                 AnsiString( "] forint [" ) +
                                                 AnsiString( pUser->GetUserNev(MainSettings->GetCurrentUser()) ) +
                                                 AnsiString( "]" );
@@ -821,7 +842,7 @@ void TFormMain::ActionBerletKosarba()
    // Adatok átadása a Bérleteladás ablakból a kosárnak
    strncpy( stKosar.strVonalkod, FormBerletEladas->EditVonalkod->Text.c_str(), sizeof(stKosar.strVonalkod)-2 );
    strcpy( stKosar.strNev, FormBerletEladas->ComboBoxTipus->Items->Strings[FormBerletEladas->ComboBoxTipus->ItemIndex].c_str() );
-   stKosar.nAr = FormBerletEladas->EditBTAr->Text.ToInt();
+   stKosar.nAr = convertCurrency(FormBerletEladas->EditBTAr->Text.ToDouble());
    stKosar.nDarab = 1;
    // Bérlet felvétele a kosárba
    pKosar->AddKosar( stKosar );
@@ -842,7 +863,7 @@ void TFormMain::ActionTermekKosarba()
    // Adatok átadása a Termékeladás ablakból a kosárnak
    strncpy( stKosar.strVonalkod, FormTermekEladas->EditVonalkod->Text.c_str(), sizeof(stKosar.strVonalkod)-2 );
    strncpy( stKosar.strNev, FormTermekEladas->EditNev->Text.c_str(), sizeof(stKosar.strNev)-2 );
-   stKosar.nAr = FormTermekEladas->EditAr->Text.ToInt();
+   stKosar.nAr = convertCurrency(FormTermekEladas->EditAr->Text.ToDouble());
    stKosar.nDarab = FormTermekEladas->ComboBoxDarab->Items->Strings[FormTermekEladas->ComboBoxDarab->ItemIndex].ToInt();
    // Termék felvétele a kosárba
    pKosar->AddKosar( stKosar );
@@ -884,7 +905,7 @@ void TFormMain::ActionTermekListaKosarba()
    // Adatok átadása a Termékeladás ablakból a kosárnak
    strncpy( stKosar.strVonalkod, FormTermekListaEladas->EditVonalkod->Text.c_str(), sizeof(stKosar.strVonalkod)-2 );
    strncpy( stKosar.strNev, FormTermekListaEladas->EditNev->Text.c_str(), sizeof(stKosar.strNev)-2 );
-   stKosar.nAr = FormTermekListaEladas->EditAr->Text.ToInt();
+   stKosar.nAr = convertCurrency(FormTermekListaEladas->EditAr->Text.ToDouble());
    stKosar.nDarab = FormTermekListaEladas->ComboBoxDarab->Items->Strings[FormTermekListaEladas->ComboBoxDarab->ItemIndex].ToInt();
    // Termék felvétele a kosárba
    pKosar->AddKosar( stKosar );

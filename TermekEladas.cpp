@@ -19,7 +19,7 @@ void __fastcall TFormTermekEladas::FormActivate(TObject *Sender)
    EditID->Text = AnsiString( stTermek.nID );
    EditNev->Text = AnsiString( stTermek.strNev );
    EditVonalkod->Text = AnsiString( stTermek.strVonalkod );
-   EditAr->Text = AnsiString( stTermek.nAr );
+   EditAr->Text = convertToCurrencyString( stTermek.nAr );
    EditDarab->Text = AnsiString( stTermek.nDarab );
 
    ComboBoxDarab->Clear();
@@ -38,7 +38,7 @@ void __fastcall TFormTermekEladas::FormActivate(TObject *Sender)
       BitBtnKosar->Enabled = true;
    }
    ComboBoxDarab->ItemIndex = 0;
-   EditFizetendo->Text = AnsiString( stTermek.nAr );
+   EditFizetendo->Text = convertToCurrencyString( stTermek.nAr );
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormTermekEladas::FormShortCut(TWMKey &Msg, bool &Handled)
@@ -56,8 +56,8 @@ void __fastcall TFormTermekEladas::FormShortCut(TWMKey &Msg, bool &Handled)
 void __fastcall TFormTermekEladas::ComboBoxDarabChange(TObject *Sender)
 {
    int nDarab = ComboBoxDarab->Items->Strings[ComboBoxDarab->ItemIndex].ToInt();
-   int nAr = EditAr->Text.ToInt();
+   int nAr = convertCurrency(EditAr->Text.ToDouble());
 
-   EditFizetendo->Text = AnsiString( nDarab*nAr );
+   EditFizetendo->Text = convertToCurrencyString( nDarab*nAr );
 }
 //---------------------------------------------------------------------------

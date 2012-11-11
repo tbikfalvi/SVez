@@ -60,12 +60,12 @@ void TFormKosar::FillListKosar( TObject *Sender )
       StringGridKosar->Cells[0][i+1] = AnsiString( stTemp.nID );
       StringGridKosar->Cells[1][i+1] = KosarTipus[stTemp.nTipus];
       StringGridKosar->Cells[2][i+1] = AnsiString( stTemp.strNev );
-      StringGridKosar->Cells[3][i+1] = AnsiString( stTemp.nAr );
+      StringGridKosar->Cells[3][i+1] = convertToCurrencyString( stTemp.nAr );
       StringGridKosar->Cells[4][i+1] = AnsiString( stTemp.nDarab );
    }
    StringGridKosar->Row = 1;
    StringGridKosarClick(Sender);
-   LabelFizetendo->Caption = AnsiString( pKosar->GetKosarAr() );
+   LabelFizetendo->Caption = AnsiString( pKosar->GetKosarAr()/100 );
    if( pKosar->GetKosarAr() > 0 )
    {
       BitBtnFizetes->Enabled = true;
@@ -147,7 +147,7 @@ void __fastcall TFormKosar::BitBtnBerletAddClick(TObject *Sender)
       strncpy( stKosar.strVonalkod, FormBerletEladas->EditVonalkod->Text.c_str(), sizeof(stKosar.strVonalkod)-2 );
       stKosar.nTipus = 0;
       strcpy( stKosar.strNev, FormBerletEladas->ComboBoxTipus->Items->Strings[FormBerletEladas->ComboBoxTipus->ItemIndex].c_str() );
-      stKosar.nAr = FormBerletEladas->EditBTAr->Text.ToInt();
+      stKosar.nAr = convertCurrency(FormBerletEladas->EditBTAr->Text.ToDouble());
       stKosar.nDarab = 1;
 
       pKosar->AddKosar( stKosar );
@@ -173,7 +173,7 @@ void __fastcall TFormKosar::BitBtnTermekAddClick(TObject *Sender)
       // Adatok átadása a Termékeladás ablakból a kosárnak
       strncpy( stKosar.strVonalkod, FormTermekListaEladas->EditVonalkod->Text.c_str(), sizeof(stKosar.strVonalkod)-2 );
       strncpy( stKosar.strNev, FormTermekListaEladas->EditNev->Text.c_str(), sizeof(stKosar.strNev)-2 );
-      stKosar.nAr = FormTermekListaEladas->EditAr->Text.ToInt();
+      stKosar.nAr = convertCurrency(FormTermekListaEladas->EditAr->Text.ToDouble());
       stKosar.nDarab = FormTermekListaEladas->ComboBoxDarab->Items->Strings[FormTermekListaEladas->ComboBoxDarab->ItemIndex].ToInt();
       // Termék felvétele a kosárba
       pKosar->AddKosar( stKosar );

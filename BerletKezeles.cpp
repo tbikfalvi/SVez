@@ -70,7 +70,7 @@ void TFormBerlet::FillListBerletTipusok()
       StringGridBerletTipus->Cells[0][i+1] = AnsiString( stTemp.nID );
       StringGridBerletTipus->Cells[1][i+1] = AnsiString( stTemp.strNev );
       StringGridBerletTipus->Cells[2][i+1] = AnsiString( stTemp.nEgyseg );
-      StringGridBerletTipus->Cells[3][i+1] = AnsiString( stTemp.nAr );
+      StringGridBerletTipus->Cells[3][i+1] = convertToCurrencyString( stTemp.nAr );
    }
 }
 //---------------------------------------------------------------------------
@@ -94,7 +94,7 @@ void __fastcall TFormBerlet::ListBoxBerletTipusokClick(TObject *Sender)
 
    EditBTID->Text = AnsiString( stTemp.nID );
    EditBTNev->Text = AnsiString( stTemp.strNev );
-   EditBTAr->Text = AnsiString( stTemp.nAr );
+   EditBTAr->Text = convertToCurrencyString( stTemp.nAr );
    EditBTEgyseg->Text = AnsiString( stTemp.nEgyseg );
    EditBTErvTolEv->Text = AnsiString( stTemp.nErvTolEv );
    EditBTErvTolHo->Text = AnsiString( stTemp.nErvTolHo );
@@ -249,7 +249,7 @@ bool TFormBerlet::AdatEllenorzes()
       return false;
    }
    if( EditBTAr->Text.IsEmpty() )
-      EditBTAr->Text = "0";
+      EditBTAr->Text = "0.00";
    if( EditBTEgyseg->Text.IsEmpty() )
       EditBTEgyseg->Text = "0";
    if( EditBTErvTolEv->Text.IsEmpty() )
@@ -283,7 +283,7 @@ void __fastcall TFormBerlet::ButtonBTSaveClick(TObject *Sender)
    {
       stTemp.nID        = EditBTID->Text.ToInt();
       strncpy( stTemp.strNev, EditBTNev->Text.c_str(), sizeof(stTemp.strNev)-2 );
-      stTemp.nAr        = EditBTAr->Text.ToInt();
+      stTemp.nAr        = convertCurrency(EditBTAr->Text.ToDouble());
       stTemp.nEgyseg    = EditBTEgyseg->Text.ToInt();
       stTemp.nErvTolEv  = EditBTErvTolEv->Text.ToInt();
       stTemp.nErvTolHo  = EditBTErvTolHo->Text.ToInt();

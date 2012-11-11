@@ -64,8 +64,8 @@ void TFormTermekKezeles::FillListTermekek( TObject *Sender )
       StringGridTermek->Cells[0][i+1] = AnsiString( stTemp.nID );
       StringGridTermek->Cells[1][i+1] = AnsiString( stTemp.strNev );
       StringGridTermek->Cells[2][i+1] = AnsiString( stTemp.strVonalkod );
-      StringGridTermek->Cells[3][i+1] = AnsiString( stTemp.nAr );
-      StringGridTermek->Cells[4][i+1] = AnsiString( stTemp.nArBeszerzes );
+      StringGridTermek->Cells[3][i+1] = convertToCurrencyString( stTemp.nAr );
+      StringGridTermek->Cells[4][i+1] = convertToCurrencyString( stTemp.nArBeszerzes );
       StringGridTermek->Cells[5][i+1] = AnsiString( stTemp.nDarab );
    }
 
@@ -107,8 +107,8 @@ void __fastcall TFormTermekKezeles::StringGridTermekClick(TObject *Sender)
       stTemp.nID = Items->Strings[0].ToDouble();
       strcpy( stTemp.strNev, Items->Strings[1].c_str() );
       strcpy( stTemp.strVonalkod, Items->Strings[2].c_str() );
-      stTemp.nAr = Items->Strings[3].ToInt();
-      stTemp.nArBeszerzes = Items->Strings[4].ToInt();
+      stTemp.nAr = convertCurrencyString(Items->Strings[3].c_str());
+      stTemp.nArBeszerzes = convertCurrencyString(Items->Strings[4].c_str());
       stTemp.nDarab = Items->Strings[5].ToInt();
 
       ListBoxAssigned->Clear();
@@ -140,9 +140,9 @@ void __fastcall TFormTermekKezeles::StringGridTermekClick(TObject *Sender)
    EditVonalkod->Enabled = false;
    EditVonalkod->Text = AnsiString( stTemp.strVonalkod );
    EditAr->Enabled = false;
-   EditAr->Text = AnsiString( stTemp.nAr );
+   EditAr->Text = convertToCurrencyString( stTemp.nAr );
    EditArBeszerzes->Enabled = false;
-   EditArBeszerzes->Text = AnsiString( stTemp.nArBeszerzes );
+   EditArBeszerzes->Text = convertToCurrencyString( stTemp.nArBeszerzes );
    EditDarab->Enabled = false;
    EditDarab->Text = AnsiString( stTemp.nDarab );
    ListBoxAssigned->Enabled = false;
@@ -229,8 +229,8 @@ void TFormTermekKezeles::SortListTermekek( int nCell )
             stTemp.nID = Items->Strings[0].ToDouble();
             strcpy( stTemp.strNev, Items->Strings[1].c_str() );
             strcpy( stTemp.strVonalkod, Items->Strings[2].c_str() );
-            stTemp.nAr = Items->Strings[3].ToInt();
-            stTemp.nArBeszerzes = Items->Strings[4].ToInt();
+            stTemp.nAr = convertCurrencyString(Items->Strings[3].c_str());
+            stTemp.nArBeszerzes = convertCurrencyString(Items->Strings[4].c_str());
             stTemp.nDarab = Items->Strings[5].ToInt();
 
             StringGridTermek->Cells[0][j] = ItemsBubble->Strings[0];
@@ -243,8 +243,8 @@ void TFormTermekKezeles::SortListTermekek( int nCell )
             StringGridTermek->Cells[0][j+1] = AnsiString( stTemp.nID );
             StringGridTermek->Cells[1][j+1] = AnsiString( stTemp.strNev );
             StringGridTermek->Cells[2][j+1] = AnsiString( stTemp.strVonalkod );
-            StringGridTermek->Cells[3][j+1] = AnsiString( stTemp.nAr );
-            StringGridTermek->Cells[4][j+1] = AnsiString( stTemp.nArBeszerzes );
+            StringGridTermek->Cells[3][j+1] = convertToCurrencyString( stTemp.nAr );
+            StringGridTermek->Cells[4][j+1] = convertToCurrencyString( stTemp.nArBeszerzes );
             StringGridTermek->Cells[5][j+1] = AnsiString( stTemp.nDarab );
          }
          j--;
@@ -423,9 +423,9 @@ void __fastcall TFormTermekKezeles::BitBtnSaveModifyClick(TObject *Sender)
    stTemp.nID = EditID->Text.ToDouble();
    strncpy( stTemp.strNev, EditNev->Text.c_str(), sizeof(stTemp.strNev)-2 );
    strncpy( stTemp.strVonalkod, EditVonalkod->Text.c_str(), sizeof(stTemp.strVonalkod)-2 );
-   stTemp.nAr = EditAr->Text.ToInt();
+   stTemp.nAr = convertCurrencyString(EditAr->Text.c_str());
    stTemp.nDarab = EditDarab->Text.ToInt();
-   stTemp.nArBeszerzes = EditArBeszerzes->Text.ToInt();
+   stTemp.nArBeszerzes = convertCurrencyString(EditArBeszerzes->Text.c_str());
 
    typ_termektipusassign stAsg;
 
@@ -502,8 +502,8 @@ void __fastcall TFormTermekKezeles::BitBtnPlusClick(TObject *Sender)
       stTemp.nID = Items->Strings[0].ToDouble();
       strcpy( stTemp.strNev, Items->Strings[1].c_str() );
       strcpy( stTemp.strVonalkod, Items->Strings[2].c_str() );
-      stTemp.nAr = Items->Strings[3].ToInt();
-      stTemp.nArBeszerzes = Items->Strings[4].ToInt();
+      stTemp.nAr = convertCurrencyString(Items->Strings[3].c_str());
+      stTemp.nArBeszerzes = convertCurrencyString(Items->Strings[4].c_str());
       stTemp.nDarab = Items->Strings[5].ToInt();
    }
 
@@ -549,8 +549,8 @@ void __fastcall TFormTermekKezeles::BitBtnMinusClick(TObject *Sender)
       stTemp.nID = Items->Strings[0].ToDouble();
       strcpy( stTemp.strNev, Items->Strings[1].c_str() );
       strcpy( stTemp.strVonalkod, Items->Strings[2].c_str() );
-      stTemp.nAr = Items->Strings[3].ToInt();
-      stTemp.nArBeszerzes = Items->Strings[4].ToInt();
+      stTemp.nAr = convertCurrencyString(Items->Strings[3].c_str());
+      stTemp.nArBeszerzes = convertCurrencyString(Items->Strings[4].c_str());
       stTemp.nDarab = Items->Strings[5].ToInt();
    }
 

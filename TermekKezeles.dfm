@@ -1,6 +1,6 @@
 object FormTermekKezeles: TFormTermekKezeles
-  Left = 306
-  Top = 174
+  Left = 285
+  Top = 20
   BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'Termékek kezelése'

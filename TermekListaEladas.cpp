@@ -80,7 +80,7 @@ void TFormTermekListaEladas::FillListTermekek( TObject *Sender )
       StringGridTermek->Cells[0][i+1] = AnsiString( stTemp.nID );
       StringGridTermek->Cells[1][i+1] = AnsiString( stTemp.strNev );
       StringGridTermek->Cells[2][i+1] = AnsiString( stTemp.strVonalkod );
-      StringGridTermek->Cells[3][i+1] = AnsiString( stTemp.nAr );
+      StringGridTermek->Cells[3][i+1] = convertToCurrencyString( stTemp.nAr );
       StringGridTermek->Cells[4][i+1] = AnsiString( stTemp.nDarab );
    }
 
@@ -107,13 +107,13 @@ void __fastcall TFormTermekListaEladas::StringGridTermekClick(TObject *Sender)
       stTermek.nID = Items->Strings[0].ToDouble();
       strcpy( stTermek.strNev, Items->Strings[1].c_str() );
       strcpy( stTermek.strVonalkod, Items->Strings[2].c_str() );
-      stTermek.nAr = Items->Strings[3].ToInt();
+      stTermek.nAr = convertCurrency(Items->Strings[3].ToDouble());
       stTermek.nDarab = Items->Strings[4].ToInt();
 
       EditID->Text = AnsiString( stTermek.nID );
       EditNev->Text = AnsiString( stTermek.strNev );
       EditVonalkod->Text = AnsiString( stTermek.strVonalkod );
-      EditAr->Text = AnsiString( stTermek.nAr );
+      EditAr->Text = convertToCurrencyString( stTermek.nAr );
       EditDarab->Text = AnsiString( stTermek.nDarab );
 
       ComboBoxDarab->Clear();
@@ -132,7 +132,7 @@ void __fastcall TFormTermekListaEladas::StringGridTermekClick(TObject *Sender)
          BitBtnKosar->Enabled = true;
       }
       ComboBoxDarab->ItemIndex = 0;
-      EditFizetendo->Text = AnsiString( stTermek.nAr );
+      EditFizetendo->Text = convertToCurrencyString( stTermek.nAr );
    }
    if( !bFizetesEnabled )
       BitBtnOk->Enabled = false;
@@ -186,7 +186,7 @@ void TFormTermekListaEladas::SortListTermekek( int nCell )
             stTemp.nID = Items->Strings[0].ToDouble();
             strcpy( stTemp.strNev, Items->Strings[1].c_str() );
             strcpy( stTemp.strVonalkod, Items->Strings[2].c_str() );
-            stTemp.nAr = Items->Strings[3].ToInt();
+            stTemp.nAr = convertCurrency(Items->Strings[3].ToDouble());
             stTemp.nDarab = Items->Strings[4].ToInt();
 
             StringGridTermek->Cells[0][j] = ItemsBubble->Strings[0];
@@ -198,7 +198,7 @@ void TFormTermekListaEladas::SortListTermekek( int nCell )
             StringGridTermek->Cells[0][j+1] = AnsiString( stTemp.nID );
             StringGridTermek->Cells[1][j+1] = AnsiString( stTemp.strNev );
             StringGridTermek->Cells[2][j+1] = AnsiString( stTemp.strVonalkod );
-            StringGridTermek->Cells[3][j+1] = AnsiString( stTemp.nAr );
+            StringGridTermek->Cells[3][j+1] = convertToCurrencyString( stTemp.nAr );
             StringGridTermek->Cells[4][j+1] = AnsiString( stTemp.nDarab );
          }
          j--;
@@ -211,7 +211,7 @@ void __fastcall TFormTermekListaEladas::ComboBoxDarabChange(TObject *Sender)
    int nDarab = ComboBoxDarab->Items->Strings[ComboBoxDarab->ItemIndex].ToInt();
    int nAr = stTermek.nAr;
 
-   EditFizetendo->Text = AnsiString( nDarab*nAr );
+   EditFizetendo->Text = convertToCurrencyString( nDarab*nAr );
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormTermekListaEladas::BitBtnSortNameClick(TObject *Sender)
