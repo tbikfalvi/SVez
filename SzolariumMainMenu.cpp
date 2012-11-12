@@ -820,7 +820,7 @@ void __fastcall TFormMain::MenuMain_SystemImport_BerletClick(TObject *Sender)
 
                strLine = strLine.SubString( nPos+1, strLine.Length()-nPos );
                nPos = strLine.Pos('\t');
-               stBerletTipus.nAr = convertCurrency(strLine.SubString( 1, nPos-1 ).ToDouble());
+               stBerletTipus.nAr = convertCurrencyString(strLine.SubString( 1, nPos-1 ).c_str());
 
                if( pBerletek->GetIDBerletTipusAr( stBerletTipus.nAr ) == 0 )
                {

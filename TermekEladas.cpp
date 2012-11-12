@@ -56,7 +56,7 @@ void __fastcall TFormTermekEladas::FormShortCut(TWMKey &Msg, bool &Handled)
 void __fastcall TFormTermekEladas::ComboBoxDarabChange(TObject *Sender)
 {
    int nDarab = ComboBoxDarab->Items->Strings[ComboBoxDarab->ItemIndex].ToInt();
-   int nAr = convertCurrency(EditAr->Text.ToDouble());
+   int nAr = convertCurrencyString(EditAr->Text.c_str());
 
    EditFizetendo->Text = convertToCurrencyString( nDarab*nAr );
 }

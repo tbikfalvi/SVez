@@ -38,8 +38,8 @@ void __fastcall TFormFizetes::EditFizetettChange(TObject *Sender)
 
    try
    {
-      int nFizetendo  = convertCurrency(LabelFizetendo->Caption.ToDouble());
-      int nFizetett   = convertCurrency(EditFizetett->Text.ToDouble());
+      int nFizetendo  = convertCurrencyString(LabelFizetendo->Caption.c_str());
+      int nFizetett   = convertCurrencyString(EditFizetett->Text.c_str());
       int nVisszajaro = nFizetett - nFizetendo;
 
       if( nFizetett > nFizetendo )

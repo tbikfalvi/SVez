@@ -283,7 +283,7 @@ void __fastcall TFormBerlet::ButtonBTSaveClick(TObject *Sender)
    {
       stTemp.nID        = EditBTID->Text.ToInt();
       strncpy( stTemp.strNev, EditBTNev->Text.c_str(), sizeof(stTemp.strNev)-2 );
-      stTemp.nAr        = convertCurrency(EditBTAr->Text.ToDouble());
+      stTemp.nAr        = convertCurrencyString(EditBTAr->Text.c_str());
       stTemp.nEgyseg    = EditBTEgyseg->Text.ToInt();
       stTemp.nErvTolEv  = EditBTErvTolEv->Text.ToInt();
       stTemp.nErvTolHo  = EditBTErvTolHo->Text.ToInt();

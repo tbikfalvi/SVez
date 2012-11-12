@@ -147,7 +147,7 @@ void __fastcall TFormKosar::BitBtnBerletAddClick(TObject *Sender)
       strncpy( stKosar.strVonalkod, FormBerletEladas->EditVonalkod->Text.c_str(), sizeof(stKosar.strVonalkod)-2 );
       stKosar.nTipus = 0;
       strcpy( stKosar.strNev, FormBerletEladas->ComboBoxTipus->Items->Strings[FormBerletEladas->ComboBoxTipus->ItemIndex].c_str() );
-      stKosar.nAr = convertCurrency(FormBerletEladas->EditBTAr->Text.ToDouble());
+      stKosar.nAr = convertCurrencyString(FormBerletEladas->EditBTAr->Text.c_str());
       stKosar.nDarab = 1;
 
       pKosar->AddKosar( stKosar );
@@ -173,7 +173,7 @@ void __fastcall TFormKosar::BitBtnTermekAddClick(TObject *Sender)
       // Adatok átadása a Termékeladás ablakból a kosárnak
       strncpy( stKosar.strVonalkod, FormTermekListaEladas->EditVonalkod->Text.c_str(), sizeof(stKosar.strVonalkod)-2 );
       strncpy( stKosar.strNev, FormTermekListaEladas->EditNev->Text.c_str(), sizeof(stKosar.strNev)-2 );
-      stKosar.nAr = convertCurrency(FormTermekListaEladas->EditAr->Text.ToDouble());
+      stKosar.nAr = convertCurrencyString(FormTermekListaEladas->EditAr->Text.c_str());
       stKosar.nDarab = FormTermekListaEladas->ComboBoxDarab->Items->Strings[FormTermekListaEladas->ComboBoxDarab->ItemIndex].ToInt();
       // Termék felvétele a kosárba
       pKosar->AddKosar( stKosar );

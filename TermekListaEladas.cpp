@@ -107,7 +107,7 @@ void __fastcall TFormTermekListaEladas::StringGridTermekClick(TObject *Sender)
       stTermek.nID = Items->Strings[0].ToDouble();
       strcpy( stTermek.strNev, Items->Strings[1].c_str() );
       strcpy( stTermek.strVonalkod, Items->Strings[2].c_str() );
-      stTermek.nAr = convertCurrency(Items->Strings[3].ToDouble());
+      stTermek.nAr = convertCurrencyString(Items->Strings[3].c_str());
       stTermek.nDarab = Items->Strings[4].ToInt();
 
       EditID->Text = AnsiString( stTermek.nID );
@@ -186,7 +186,7 @@ void TFormTermekListaEladas::SortListTermekek( int nCell )
             stTemp.nID = Items->Strings[0].ToDouble();
             strcpy( stTemp.strNev, Items->Strings[1].c_str() );
             strcpy( stTemp.strVonalkod, Items->Strings[2].c_str() );
-            stTemp.nAr = convertCurrency(Items->Strings[3].ToDouble());
+            stTemp.nAr = convertCurrencyString(Items->Strings[3].c_str());
             stTemp.nDarab = Items->Strings[4].ToInt();
 
             StringGridTermek->Cells[0][j] = ItemsBubble->Strings[0];
