@@ -44,7 +44,7 @@ void __fastcall TFormFizetes::EditFizetettChange(TObject *Sender)
 
       if( nFizetett > nFizetendo )
       {
-         LabelVisszajaro->Caption = AnsiString( nVisszajaro/100 );
+         LabelVisszajaro->Caption = convertToCurrencyString( nVisszajaro );
       }
       else
       {
