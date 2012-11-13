@@ -65,7 +65,7 @@ void TFormKosar::FillListKosar( TObject *Sender )
    }
    StringGridKosar->Row = 1;
    StringGridKosarClick(Sender);
-   LabelFizetendo->Caption = AnsiString( pKosar->GetKosarAr()/100 );
+   LabelFizetendo->Caption = convertToCurrencyString( pKosar->GetKosarAr() );
    if( pKosar->GetKosarAr() > 0 )
    {
       BitBtnFizetes->Enabled = true;

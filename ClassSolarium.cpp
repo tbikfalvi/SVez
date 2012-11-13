@@ -257,7 +257,7 @@ void CS_Solarium::StatuszBeallitas( char nStatus )
                      AnsiString( "] [" ) +
                      AnsiString( nIdoBarnulas ) +
                      AnsiString( "] idõ [" ) +
-                     AnsiString( nForintBarnulas ) +
+                     convertToCurrencyString( nForintBarnulas ) +
                      AnsiString( "] forintidõ [" ) +
                      AnsiString( nIdoBerlet ) +
                      AnsiString( "] bérletidõ [" ) +
@@ -964,7 +964,7 @@ void CS_Solarium::StartPrepare( int nBarnulas, int nForint )
    {
       // fizetést jelzõ felirat megjelenítése
       bFizetniKell = true;
-      sprintf( strTemp, "%d %s", nForintBarnulas, FormLanguage->LangStr(STR_CURRENCY).c_str() );
+      sprintf( strTemp, "%s %s", convertToCurrencyString(nForintBarnulas).c_str(), FormLanguage->LangStr(STR_CURRENCY).c_str() );
       Label_Penz->Caption = AnsiString( strTemp );
       Label_Penz->Visible = true;
    }

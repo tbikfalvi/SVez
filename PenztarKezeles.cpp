@@ -19,7 +19,7 @@ __fastcall TFormPenztarKezeles::TFormPenztarKezeles(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TFormPenztarKezeles::FormActivate(TObject *Sender)
 {
-   LabelCash->Caption = AnsiString( pPenztar->GetPenztarEgyenleg() );
+   LabelCash->Caption = convertToCurrencyString( pPenztar->GetPenztarEgyenleg() );
 
    stUser = pUser->GetUserLogin( pMainSettings->GetCurrentUser() );
    BitBtnPlus->SetFocus();
@@ -52,13 +52,13 @@ void __fastcall TFormPenztarKezeles::BitBtnPlusClick(TObject *Sender)
       if( FormCommentDialog->ShowModal() == mrOk )
       {
          pPenztar->PenztarBevetel( stUser,
-                                   FormInputDialog->EditText->Text.ToInt(),
+                                   convertCurrencyString( FormInputDialog->EditText->Text.c_str() ),
                                    FormCommentDialog->strMegjegyzes );
       }
       else
       {
          pPenztar->PenztarBevetel( stUser,
-                                   FormInputDialog->EditText->Text.ToInt(),
+                                   convertCurrencyString( FormInputDialog->EditText->Text.c_str() ),
                                    FormLanguage->LangStr(STR_NO_COMMENT).c_str() );
       }
       pPenztar->strLogMsg = AnsiString( "Penztar feltoltese [" ) +
@@ -66,7 +66,7 @@ void __fastcall TFormPenztarKezeles::BitBtnPlusClick(TObject *Sender)
                             AnsiString( "]" );
       pPenztar->LOG2( pPenztar->strLogMsg );
 
-      LabelCash->Caption = AnsiString( pPenztar->GetPenztarEgyenleg() );
+      LabelCash->Caption = convertToCurrencyString( pPenztar->GetPenztarEgyenleg() );
    }
 }
 //---------------------------------------------------------------------------
@@ -91,13 +91,13 @@ void __fastcall TFormPenztarKezeles::BitBtnMinusClick(TObject *Sender)
       if( FormCommentDialog->ShowModal() == mrOk )
       {
          pPenztar->PenztarKiadas( stUser,
-                                  FormInputDialog->EditText->Text.ToInt(),
+                                  convertCurrencyString( FormInputDialog->EditText->Text.c_str() ),
                                   FormCommentDialog->strMegjegyzes );
       }
       else
       {
          pPenztar->PenztarKiadas( stUser,
-                                  FormInputDialog->EditText->Text.ToInt(),
+                                  convertCurrencyString( FormInputDialog->EditText->Text.c_str() ),
                                   FormLanguage->LangStr(STR_NO_COMMENT).c_str() );
       }
       pPenztar->strLogMsg = AnsiString( "Penztar csokkentese [" ) +
@@ -105,7 +105,7 @@ void __fastcall TFormPenztarKezeles::BitBtnMinusClick(TObject *Sender)
                             AnsiString( "]" );
       pPenztar->LOG2( pPenztar->strLogMsg );
 
-      LabelCash->Caption = AnsiString( pPenztar->GetPenztarEgyenleg() );
+      LabelCash->Caption = convertToCurrencyString( pPenztar->GetPenztarEgyenleg() );
    }
 }
 //---------------------------------------------------------------------------

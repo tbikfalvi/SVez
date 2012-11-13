@@ -573,8 +573,8 @@ void TFormLista::FillPenztarLista()
             for( nL=0; nL<(int)(nLength[2]-5); nL++ ) strLine += " ";
             break;
       }
-      strLine += AnsiString( stTemp.nCash );
-      for( nL=0; nL<(int)(nLength[3]-AnsiString(stTemp.nCash).Length()); nL++ ) strLine += " ";
+      strLine += convertToCurrencyString( stTemp.nCash );
+      for( nL=0; nL<(int)(nLength[3]-convertToCurrencyString(stTemp.nCash).Length()); nL++ ) strLine += " ";
       strncpy(strTemp, stTemp.strMegjegyzes, 45 );
       if( strlen(stTemp.strMegjegyzes) > 45 )
          strcat( strTemp, "..." );
@@ -593,8 +593,8 @@ void TFormLista::FillPenztarLista()
    strLine += FormLanguage->LangStr(STR_CASH_CURRENT_VALUE);
    for( nL=0; nL<(int)(nLength[1]-FormLanguage->LangStr(STR_CASH_CURRENT_VALUE).Length()); nL++ ) strLine += " ";
    for( nL=0; nL<(int)(nLength[2]); nL++ ) strLine += " ";
-   strLine += AnsiString( pPenztar->GetPenztarEgyenleg() );
-   for( nL=0; nL<(int)(nLength[3]-AnsiString(pPenztar->GetPenztarEgyenleg()).Length()); nL++ ) strLine += " ";
+   strLine += convertToCurrencyString( pPenztar->GetPenztarEgyenleg() );
+   for( nL=0; nL<(int)(nLength[3]-convertToCurrencyString(pPenztar->GetPenztarEgyenleg()).Length()); nL++ ) strLine += " ";
 
    RichEditLista->Lines->Add( strLine );
 }
@@ -855,14 +855,14 @@ void TFormLista::FillKonyvLista()
       for( nL=0; nL<(int)(nLength[0]-16); nL++ ) strLine += " ";
       strLine += FormatDateTime("yyyy/mm/dd hh:nn",dStopDate);
       for( nL=0; nL<(int)(nLength[1]-16); nL++ ) strLine += " ";
-      strLine += AnsiString( dBerletBevetel );
-      for( nL=0; nL<(int)(nLength[2]-AnsiString(dBerletBevetel).Length()); nL++ ) strLine += " ";
-      strLine += AnsiString( dTermekBevetel );
-      for( nL=0; nL<(int)(nLength[3]-AnsiString(dTermekBevetel).Length()); nL++ ) strLine += " ";
-      strLine += AnsiString( dSumUzemeltFt );
-      for( nL=0; nL<(int)(nLength[4]-AnsiString(dSumUzemeltFt).Length()); nL++ ) strLine += " ";
-      strLine += AnsiString( dBerletBevetel+dTermekBevetel+dSumUzemeltFt );
-      for( nL=0; nL<(int)(nLength[5]-AnsiString(dBerletBevetel+dTermekBevetel+dSumUzemeltFt).Length()); nL++ ) strLine += " ";
+      strLine += convertToCurrencyString( dBerletBevetel );
+      for( nL=0; nL<(int)(nLength[2]-convertToCurrencyString(dBerletBevetel).Length()); nL++ ) strLine += " ";
+      strLine += convertToCurrencyString( dTermekBevetel );
+      for( nL=0; nL<(int)(nLength[3]-convertToCurrencyString(dTermekBevetel).Length()); nL++ ) strLine += " ";
+      strLine += convertToCurrencyString( dSumUzemeltFt );
+      for( nL=0; nL<(int)(nLength[4]-convertToCurrencyString(dSumUzemeltFt).Length()); nL++ ) strLine += " ";
+      strLine += convertToCurrencyString( dBerletBevetel+dTermekBevetel+dSumUzemeltFt );
+      for( nL=0; nL<(int)(nLength[5]-convertToCurrencyString(dBerletBevetel+dTermekBevetel+dSumUzemeltFt).Length()); nL++ ) strLine += " ";
    }
    RichEditLista->Lines->Add( strLine );
 
